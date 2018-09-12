@@ -1,0 +1,42 @@
+<% include partials/header %>
+<div class = "container">
+ <header class="jumbotron">
+   <h1 style="width:30%;margin:0 auto">דף חדרים כללי</h1>
+ </header>
+ <div style="margin-bottom:60px;" class="row" style="display:flex; flex-wrap:wrap;">
+ <% var i=0; %>
+ <% arrSortRooms.forEach(function(room){%>
+  <div style="margin:0" class="col-md-4 col-sm-6">
+  <!-- use the arr we passed to do the check whos room is open and whos not! -->
+  <% for(var i=0;i<ansArr.length;i++){ %>
+  <% var roomN=ansArr[i].slice(0,3) ; %>
+  <% var takenBeds=ansArr[i].slice(4,5); %>
+  <% if(takenBeds == 8 && roomN==room.room_num){  %> 
+    <div style="background:red;color:white" class="card">
+        <h4 class="card-title" style="margin:0 auto"> <%= room.room_num %> </h4>
+        <hr style="width:80%;margin:0 auto">
+        <p style="margin:0 auto"> <%= room.gender %> </p>
+        <p style="margin:5px auto"> 
+                <a href="/rooms/<%= room.room_num %>" class="btn btn-danger">מלא 8/8</a>
+        </p>
+    </div>
+  <% } %>
+  <% if(takenBeds !=8 && roomN==room.room_num){  %>
+    <div style="background:green;color:white" class="card">
+        <h4 class="card-title" style="margin:0 auto"> <%= room.room_num %> </h4>
+        <hr style="width:80%;margin:0 auto">
+        <p style="margin:0 auto"> <%= room.gender %> </p>
+        <p style="margin:5px auto">
+        <a href="/rooms/<%= room.room_num %>" class="btn btn-primary"> <%= takenBeds %>/8 - פנוי</a>
+        </p>
+    </div>
+  <% } %>
+  <% } %>
+  </div>
+<% }); %>
+<% arrSortRooms=null; %>
+<% ansArr=null; %>
+</div> 
+</div>
+<br>
+<% include partials/footer %>

@@ -1,0 +1,15 @@
+<% include partials/header %>
+<div style="margin-bottom:240px;" class = "container">
+ <header class="jumbotron">
+   <h1 style="width:30%;margin:0 auto">דף שאילתה</h1>
+ </header>
+  <form action="/queries/get" method="POST" >
+     <div style="margin:10px auto;width:30%">
+         <input name="mis" type="text" placeholder="מספר אישי" >
+     </div>
+     <div style="margin:10px auto;width:20%">
+        <button style="color:white" class = "btn btn-primary"> חפש </button>
+     </div>
+ </form>
+</div>
+<% include partials/footer %>

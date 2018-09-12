@@ -1,0 +1,58 @@
+<% include partials/header %>
+<div style="margin-bottom:60px;" class="container">
+ <header class="jumbotron">
+   <h1 style="width:40%;margin:0 auto">דף עדכון פרטי מיטה</h1>
+ </header>
+ <% if(!bed.length){ %>
+  <form action="/rooms/:rNum/:bNum" method="POST" >
+     <div style="margin:10px auto;width:30%">
+         <input name="roomNum" type="text" placeholder="חדר" value=<%=rN%>>
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="bedNum" type="text" placeholder="מיטה" value=<%=bN%>>
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="misIshi" type="text" placeholder="מ.א">
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="fullName" type="text" placeholder="שם מלא">
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="startDate" type="text" placeholder="תאריך התחלה">    
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="endDate" type="text" placeholder="תאריך סיום"> 
+     </div>
+     <div style="margin:10px auto;width:26%">
+        <button style="color:white" class = "btn btn-primary"> עדכן פרטי מיטה </button>
+     </div>
+ </form>
+ <% } %>
+  <% if(bed.length){ %>
+    <form action="/rooms/<%=bed[0].room_num%>/<%=bed[0].bed_num %>/delete" method="POST" >
+     <div style="margin:10px auto;width:30%">
+         <input name="roomNum" type="text" placeholder="חדר" value="<%=bed[0].room_num%>" >
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="bedNum" type="text" placeholder="מיטה" value="<%=bed[0].bed_num%>" >
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="misIshi" type="text" placeholder="מ.א" value="<%=bed[0].mis_ishi%>" >
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="fullName" type="text" placeholder="שם מלא" value="<%-bed[0].full_name%>" >
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="startDate" type="text" placeholder="תאריך התחלה" value="<%=bed[0].start_date%>" >    
+     </div>
+     <div  style="margin:10px auto;width:30%">
+        <input name="endDate" type="text" placeholder="תאריך סיום" value="<%=bed[0].end_data%>" >
+     </div>
+     <div style="margin:10px auto;width:20%">
+        <button style="color:white" class = "btn btn-primary"> מחק </button>
+     </div>
+ </form>
+  <% } %>
+
+</div>
+<% include partials/footer %>

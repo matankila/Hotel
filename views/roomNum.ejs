@@ -1,0 +1,43 @@
+<% include partials/header %>
+            <% var arr = []; %>
+            <!-- fill the taken rooms in array -->
+            <% room.forEach(function(bed){ %>
+            <% if(bed.bed_num){ %>
+                   <% arr[bed.bed_num]=bed; %>
+            <% } %>
+            <% }); %>
+<div class = "container">
+<div style="margin-bottom:60px;" class="container">
+<header class="jumbotron">
+<h1 style="width:50%;margin:0 auto"> <%=rN %> - דף בחירת מיטה בחדר</h1>
+</header>
+<div class="row" style="display:flex; flex-wrap:wrap;">
+            <!-- fill rest of the beds -->
+            <% for(var i=0;i<8;i+=2){%>
+            <div style="margin:0" class="col-md-6 col-sm-6">
+             <div class="card">
+               <div style="text-align:center"  class="card-title">
+                    <% if(arr[i+1]){ %>
+                    <a href="/rooms/<%= rN %>/<%= i+1 %>" class="btn btn-danger"> <%= i+1 %> </a>
+                    <% } %>
+                    <% if(!arr[i+1]){ %>
+                    <a href="/rooms/<%= rN %>/<%= i+1 %>"  class="btn btn-success"> <%= i+1 %> </a>
+                    <% } %>
+               </div>
+               <hr style="width:80%;margin:0 auto">
+               <div style="text-align:center;margin-top:12px"  class="card-title">
+                    <% if(arr[i+2]){ %>
+                    <a href="/rooms/<%= rN %>/<%= i+2 %>"  class="btn btn-danger"> <%= i+2 %> </a>
+                    <% } %>
+                    <% if(!arr[i+2]){ %>
+                    <a href="/rooms/<%= rN %>/<%= i+2 %>"  class="btn btn-success"> <%= i+2 %> </a>
+                    <% } %>
+               </div>
+             </div>
+            </div>
+            <% } %>
+</div>
+</div>
+</div>
+<br>
+<% include partials/footer %>
